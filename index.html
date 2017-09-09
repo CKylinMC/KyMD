@@ -5,7 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>DemoPage</title>
+    <link rel="Stylesheet" type="text/css" href="./dialog-polyfill.css" />
     <link rel="Stylesheet" type="text/css" href="./KyMD.css" />
+    <link rel="Stylesheet" type="text/css" href="./kymd-pdialog.css" />
 </head>
 
 <body class="preload">
@@ -62,7 +64,7 @@
                     </select>
                 <p>Or somethine else?</p>
             </div>
-            <div class="card-footer"><button onclick="void(0)">Send?</div>
+            <div class="card-footer"><button onclick="dialogDemo()">Send?</div>
                 <div class="clear"></div>
             </div>
         </div>
@@ -70,6 +72,26 @@
             <center><font size="small" color="#a9a9a9">kyMD.css<br>Powered by CKylin<br><span id="mode"></span></font>
             </center>
         </footer>
+        <script src='./dialog-polyfill.js'></script>
         <script src='./KyMD.js'></script>
-    </body>
+        <script src='./kymd-pdialog.js'></script>
+        <script>
+            var dialog;
+            function dialogDemo(){
+                dialog = new pdialog();
+                dialog.setTitle('Here is a Dialog Demo')
+                      .setContent('This is a dialog powered by dialog-polyfill.<br><br><button onclick="change()">Change Title and Text</button>')
+                      .setCloseButton('Close this!')
+                      .setOkButton('YES!')
+                      .setCloseCallback("alert('Close Button!')")
+                      .setOkCallback("alert('OK Button!')")
+                      .show();
+            }
+            function change(){
+                dialog.updateTitle('New title!');
+                dialog.updateContent('Ha! Here is the new contents!');
+            }
+        </script>
+</body>
+
 </html>
