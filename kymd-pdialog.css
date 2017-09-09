@@ -1,0 +1,65 @@
+/* author: CKylin */
+
+dialog {
+    border: none !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    width: auto !important;
+    height: auto !important;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.dialog {
+    box-shadow: 1px 5px 8px rgba(0, 0, 0, .1);
+    padding-bottom: 6px;
+    transform: scale(.8, .8);
+    opacity: 0;
+    filter: alpha(opacity=0);
+    max-height: 90%;
+    max-width: 90%;
+    max-height: 90vh;
+    max-width: 90vh;
+}
+
+.dialog.on {
+    transition: .3s cubic-bezier(0.42, 0, 0.08, 1.04) !important;
+    transform: scale(1, 1);
+    opacity: 100;
+    filter: alpha(opacity=100);
+}
+
+.dialog.on.off {
+    transition: .3s cubic-bezier(0.42, 0, 0.08, 1.04) !important;
+    transform: scale(.9, .9);
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#dialog-contents {
+    word-wrap: break-word;
+    word-break: normal;
+}
+
+#dialog-header {
+    width: 92%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0);
+}
+
+dialog.show::backdrop {
+    transition: .3s;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+dialog.show.hide::backdrop {
+    transition: .3s;
+    background: rgba(0, 0, 0, 0);
+}
